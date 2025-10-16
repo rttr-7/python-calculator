@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "calculator"
+version = "0.0.0"
+description = "A simple calculator with semantic versioning"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "Amay Chivate", email = "amaychivate07@gmail.com"}
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["calculator*"]
+
+[tool.semantic_release]
+version_toml = ["pyproject.toml:project.version"]
+branch = "main"
+upload_to_pypi = false
+upload_to_release = true
+build_command = "pip install build && python -m build"
+
+[tool.semantic_release.branches.main]
+match = "(main|master)"
+prerelease = false
